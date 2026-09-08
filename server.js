@@ -19,6 +19,7 @@ const users={
   officer:{password:process.env.OFFICER_PASSWORD||'Officer@2026',role:'Ofisera Seeraa',name:'Legal Officer'}
 };
 const sessions=new Map();
+const attendance=[];
 const hearings=[
  {id:1,caseNo:'CASE-2026-001',title:'Dhaddacha Yakkaa',date:'2026-09-10',time:'09:00',status:'Qophaa’e',meetUrl:process.env.CONFERENCE_URL||'https://meet.google.com/'}
 ];
@@ -31,7 +32,8 @@ app.post('/api/logout',auth,(req,res)=>{const token=req.headers.authorization?.r
 app.get('/api/me',auth,(req,res)=>res.json(req.user));
 app.get('/api/hearings',(req,res)=>res.json(hearings.map(({id,caseNo,title,date,time,status})=>({id,caseNo,title,date,time,status}))));
 app.get('/api/hearings/:id',(req,res)=>{const h=hearings.find(x=>x.id===Number(req.params.id)); if(!h)return res.status(404).json({error:'Dhaddachi hin argamne.'}); res.json(h);});
-app.post('/api/hearings/:id/join',auth,(req,res)=>{const h=hearings.find(x=>x.id===Number(req.params.id)); if(!h)return res.status(404).json({error:'Dhaddachi hin argamne.'}); const role=req.body.role||req.user.role; if(!roleAllowed(role))return res.status(403).json({error:'Gaheen kun hin hayyamamne.'}); res.json({ok:true,participant:req.user.name,role,caseNo:h.caseNo,meetUrl:h.meetUrl,message:'Seensa kee qophaa’eera.'});});
+app.post('/api/hearings/:id/join',auth,(req,res)=>{const h=hearings.find(x=>x.id===Number(req.params.id)); if(!h)return res.status(404).json({error:'Dhaddachi hin argamne.'}); const role=req.body.role||req.user.role; if(!roleAllowed(role))return res.status(403).json({error:'Gaheen kun hin hayyamamne.'}); const item={hearingId:h.id,caseNo:h.caseNo,user:req.user.name,username:req.user.username,role,joinedAt:new Date().toISOString()}; attendance.push(item); res.json({ok:true,...item,meetUrl:h.meetUrl,message:'Seensa kee qophaa’eera.'});});
+app.get('/api/hearings/:id/attendance',auth,(req,res)=>{if(!['Admin','Abbaa Seeraa'].includes(req.user.role))return res.status(403).json({error:'Hayyama gahaa hin qabdu.'});res.json(attendance.filter(x=>x.hearingId===Number(req.params.id)));});
 
 app.get('/api/tables',async(req,res)=>{try{const p=await db();const r=await p.request().query(`SELECT TABLE_SCHEMA,TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' ORDER BY TABLE_SCHEMA,TABLE_NAME`);res.json(r.recordset);}catch(e){res.status(500).json({error:e.message});}});
 app.get('/api/case-schema',async(req,res)=>{try{const p=await db();const r=await p.request().query(`SELECT TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME IN ('FileNumber','CaseNumber','CaseNo','CaseNumberId') OR LOWER(COLUMN_NAME) LIKE '%filenumber%' OR LOWER(COLUMN_NAME) LIKE '%casenumber%' ORDER BY TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME`);res.json(r.recordset);}catch(e){res.status(500).json({error:e.message});}});
