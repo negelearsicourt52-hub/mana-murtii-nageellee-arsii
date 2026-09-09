@@ -9,7 +9,9 @@ function openClusterMeet(cluster){
   const status=document.getElementById('clusterSelected');
 
   if(!meetUrl){
-    if(status) status.textContent='Liinkiin kilaastara kanaaf hin argamne.';
+    if(status){
+      status.textContent='Liinkiin kilaastara kanaaf hin argamne.';
+    }
     return;
   }
 
