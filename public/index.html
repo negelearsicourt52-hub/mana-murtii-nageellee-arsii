@@ -57,8 +57,71 @@ section{padding:64px 6%}.container{max-width:1180px;margin:auto}.section-head{te
 
 <section id="services" class="services"><div class="container"><div class="section-head"><h2>Tajaajiloota</h2><p>Tajaajiloota website irratti argaman.</p></div><div class="grid"><div class="card"><div class="icon">📄</div><h3>Galmee Dhimmaa</h3><p>Odeeffannoo fi adeemsa galmee dhimmaa.</p></div><div class="card"><div class="icon">🔎</div><h3>Barbaacha Galmee</h3><p>Lakkoofsa <b>Galmee</b> fayyadamuun barbaacha.</p></div><div class="card"><div class="icon">📅</div><h3>Sagantaa Dhaddachaa</h3><p>Sagantaa dhaddachaa fi odeeffannoo beellamaa.</p></div><div class="card"><div class="icon">⚖️</div><h3>Tajaajila Seeraa</h3><p>Odeeffannoo tajaajila seeraa fi qajeelfama.</p></div></div></div></section>
 
-<section id="video"><div class="container"><div class="section-head"><h2>Tajaajila Viidiyoo Konfiransii</h2><p>Mana Murtii Aanaa Nageellee Arsii seenuuf kilaastara barbaadde filadhu.</p></div><div class="card" style="max-width:980px;margin:0 auto;text-align:center;background:linear-gradient(135deg,#071f33,#126a9b);color:#fff"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">VIDEO CONFERENCE</span><h3 style="color:#fff;font-size:28px;margin:8px 0 18px">Mana Murtii Aanaa Nageellee Arsii</h3><p style="margin-bottom:22px">Kilaastara ittiin Tajaajila Viidiyoo Konfiransii fayyadamtu filadhu.</p><div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px"><a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer" style="display:block;padding:18px 12px;font-size:18px">1. Doolee</a><a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer" style="display:block;padding:18px 12px;font-size:18px">2. Leephis</a><a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer" style="display:block;padding:18px 12px;font-size:18px">3. Qaloo</a></div><p style="margin:22px 0 0;font-size:13px;opacity:.9">Kilaastara keessaa tokko cuqaasuun Google Meet ni banama.</p></div></div></section>
+<section id="video">
+  <div class="container">
+    <div class="section-head">
+      <h2>Tajaajila Viidiyoo Konfiransii</h2>
+      <p>Mana Murtii Aanaa Nageellee Arsii seenuuf kilaastara barbaadde filadhu.</p>
+    </div>
 
+    <div class="card" style="max-width:980px;margin:0 auto;text-align:center;background:linear-gradient(135deg,#071f33,#126a9b);color:#fff">
+
+      <span class="tag" style="background:rgba(255,255,255,.14);color:#fff">
+        VIDEO CONFERENCE
+      </span>
+
+      <h3 style="color:#fff;font-size:28px;margin:8px 0 18px">
+        Mana Murtii Aanaa Nageellee Arsii
+      </h3>
+
+      <p style="margin-bottom:22px">
+        Kilaastara ittiin Tajaajila Viidiyoo Konfiransii fayyadamtu filadhu.
+      </p>
+
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px">
+
+        <!-- DOOLEE -->
+        <a
+          class="btn"
+          href="https://meet.google.com/opa-fcvk-ijr"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:block;padding:18px 12px;font-size:18px"
+        >
+          1. Doolee
+        </a>
+
+        <!-- LEEPHIS -->
+        <a
+          class="btn"
+          href="https://meet.google.com/hig-tnxc-rqf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:block;padding:18px 12px;font-size:18px"
+        >
+          2. Leephis
+        </a>
+
+        <!-- QALOO -->
+        <a
+          class="btn"
+          href="https://meet.google.com/ofu-wnsx-qmk"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:block;padding:18px 12px;font-size:18px"
+        >
+          3. Qaloo
+        </a>
+
+      </div>
+
+      <p style="margin:22px 0 0;font-size:13px;opacity:.9">
+        Kilaastara keessaa tokko cuqaasuun Google Meet ni banama.
+      </p>
+
+    </div>
+  </div>
+</section>
 <section id="login"><div class="container"><div class="section-head"><h2>Seensa Sirna Dhaddachaa</h2><p>Hojjetaa ykn hirmaataa hayyamameen seeni.</p></div><div class="search-box"><div class="grid"><div><label>Username</label><input id="username" placeholder="admin" style="width:100%;padding:12px;border:1px solid #cbd7df;border-radius:8px"></div><div><label>Password</label><input id="password" type="password" placeholder="Password" style="width:100%;padding:12px;border:1px solid #cbd7df;border-radius:8px"></div></div><button class="btn" style="margin-top:14px" onclick="login()">Seeni</button><button class="btn alt" style="margin-top:14px;margin-left:8px;color:var(--navy);border-color:var(--navy);display:none" id="logoutBtn" onclick="logout()">Ba’i</button><div id="loginStatus" class="muted" style="margin-top:12px"></div></div></div></section>
 
 <section id="hearing"><div class="container"><div class="section-head"><h2>Dhaddacha Viidiyoo Konfiransii</h2><p>Sagantaa dhaddachaa ilaali; erga seentee booda qofa gara kutaa viidiyoo seeni.</p></div><div id="hearingList" class="grid"><div class="card">Sagantaa fe’aa jira...</div></div><div id="hearingRoom" class="card" style="display:none;margin-top:22px;background:linear-gradient(135deg,#071f33,#126a9b);color:#fff"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">PRE-JOIN</span><h3 id="roomTitle" style="color:#fff">Kutaa Dhaddachaa</h3><p id="roomMeta"></p><div class="grid" style="margin-top:14px"><div style="background:rgba(255,255,255,.08);padding:16px;border-radius:12px"><b>1. Gahee kee</b><select id="participantRole" style="display:block;width:100%;margin-top:9px;padding:12px;border-radius:8px;border:0"><option>Hirmaataa</option><option>Abbaa Seeraa</option><option>Abbaa Alangaa</option><option>Abukaatoo</option><option>Himatamaa</option><option>Ragaa</option><option>Ofisera Seeraa</option></select></div><div style="background:rgba(255,255,255,.08);padding:16px;border-radius:12px"><b>2. Qophii</b><p style="margin:8px 0 0">Mikirofoonii fi kaameraa kee Google Meet keessatti qopheessi. Linkiin erga mirkanaa’ee booda qofa banama.</p></div></div><div class="actions" style="margin-top:18px"><button class="btn" onclick="enterRoom()">🎥 Google Meet Bani</button><button class="btn alt" onclick="closeRoom()">Cufi</button></div><div id="roomStatus" style="margin-top:12px"></div></div><div class="notice" style="margin-top:20px"><b>Nageenya:</b> Linkiin Google Meet server irraa dhufa; hirmaataan jalqaba seensa sirna kanaa mirkaneeffachuu qaba.</div></div></section>
