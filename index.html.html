@@ -1,133 +1,21 @@
-<!doctype html>
-<html lang="om">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Website Mana Murtii Aanaa Nageellee Arsii">
-<title>Mana Murtii Aanaa Nageellee Arsii | Website</title>
-<style>
-:root{--navy:#0b2d49;--blue:#126a9b;--gold:#d6b447;--ink:#172532;--muted:#617384;--bg:#f5f8fb;--white:#fff;--line:#dce5ec;--shadow:0 12px 35px rgba(12,45,73,.10)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}a{text-decoration:none;color:inherit}button,.btn{cursor:pointer}
-.topbar{background:#071f33;color:#dfeaf1;padding:7px 6%;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.topbar span{opacity:.95}
-header{background:linear-gradient(135deg,var(--navy),#165f89);color:#fff;padding:18px 6%;display:flex;align-items:center;gap:18px}.logo{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);background:#fff;flex:none}.brand h1{margin:0;font-size:25px;letter-spacing:.2px}.brand p{margin:4px 0 0;color:#dbeaf3}
-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);box-shadow:0 3px 15px rgba(0,0,0,.08);padding:11px 6%;display:flex;align-items:center;gap:8px;flex-wrap:wrap}nav a{padding:9px 12px;border-radius:8px;color:var(--navy);font-weight:700;font-size:14px}nav a:hover{background:#edf6fb;color:var(--blue)}
-.hero{min-height:520px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(5,25,42,.92),rgba(5,25,42,.48)),url('/images/mana.jpg') center/cover}.hero-inner{width:min(1180px,88%);margin:auto;color:#fff}.eyebrow{display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 13px;font-size:13px;background:rgba(255,255,255,.08)}.hero h2{font-size:46px;line-height:1.15;max-width:780px;margin:18px 0 12px}.hero p{font-size:18px;max-width:720px;color:#e5eef4}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-block;padding:12px 19px;border-radius:8px;font-weight:800;background:var(--gold);color:#18200d;border:1px solid var(--gold)}.btn.alt{background:transparent;color:#fff;border-color:#fff}
-section{padding:64px 6%}.container{max-width:1180px;margin:auto}.section-head{text-align:center;max-width:780px;margin:0 auto 30px}.section-head h2{margin:0;color:var(--navy);font-size:31px}.section-head p{color:var(--muted);margin:8px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);transition:.2s}.card:hover{transform:translateY(-3px)}.card h3{margin:0 0 8px;color:var(--navy);font-size:19px}.tag{display:inline-block;font-size:11px;font-weight:800;color:var(--blue);background:#eaf5fb;border-radius:999px;padding:4px 9px;margin-bottom:10px}.muted{color:var(--muted)}
-.about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:stretch}.notice{background:#eef6fb;border:1px solid #d5e7f2;border-left:6px solid var(--blue);padding:23px;border-radius:12px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fact{background:#fff;border:1px solid var(--line);padding:18px;border-radius:12px}.fact strong{display:block;font-size:23px;color:var(--navy)}
-.department{position:relative}.department .num{font-size:13px;color:var(--gold);font-weight:900}.department p{margin:7px 0 0;color:var(--muted);font-size:14px}.tqo{background:linear-gradient(135deg,#fff,#eef7fb);display:flex;gap:25px;align-items:center;border:1px solid #d5e4ed;border-radius:18px;padding:24px;box-shadow:var(--shadow)}.tqo img{width:300px;height:230px;object-fit:cover;object-position:center;border-radius:14px;border:4px solid var(--gold);background:#eef4f8}.tqo h3{margin:0;color:var(--navy);font-size:27px}.role{font-weight:800;color:var(--blue);font-size:17px}.tqo ul{padding-left:20px;margin-bottom:0}
-.services .card{min-height:180px}.icon{font-size:27px;margin-bottom:7px}.search-box{max-width:820px;margin:auto;background:#fff;border:1px solid var(--line);padding:20px;border-radius:15px;box-shadow:var(--shadow)}.search{display:flex;gap:10px}.search input{flex:1;padding:14px;border:1px solid #cbd7df;border-radius:8px;font-size:15px}.search button{background:var(--navy);color:#fff;padding:0 22px;border:0;border-radius:8px;font-weight:800}.results{margin-top:18px}.result{background:#f7fafc;border:1px solid var(--line);padding:14px;border-radius:10px;margin:9px 0;overflow:auto}.result pre{white-space:pre-wrap;margin:0;font-size:12px}.video{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}.video-panel{background:linear-gradient(135deg,var(--navy),#1b6d99);color:#fff;padding:30px;border-radius:16px;min-height:260px}.video-panel h3{font-size:27px;margin-top:0}.steps{display:grid;gap:12px}.step{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.step b{width:30px;height:30px;border-radius:50%;background:var(--gold);display:grid;place-items:center;flex:none}
-.news{border-left:5px solid var(--gold)}.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact .card{box-shadow:none}.contact a{color:var(--blue);font-weight:700}.backtop{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;border:0;width:42px;height:42px;border-radius:50%;box-shadow:var(--shadow)}footer{background:#071f33;color:#dfeaf1;text-align:center;padding:30px 6%;margin-top:0}footer strong{color:#fff}
-@media(max-width:800px){.hero h2{font-size:35px}.about-grid,.video,.contact{grid-template-columns:1fr}.tqo{flex-direction:column;align-items:flex-start}.tqo img{width:100%;height:auto;max-height:360px}.topbar{display:none}nav{gap:3px}nav a{font-size:13px;padding:7px 8px}.search{flex-direction:column}.search button{padding:13px}.facts{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){section{padding:48px 5%}.brand h1{font-size:19px}.logo{width:60px;height:60px}.hero{min-height:480px}.hero h2{font-size:31px}.facts{grid-template-columns:1fr}.tqo{padding:17px}}
-</style>
-</head>
-<body>
-<div class="topbar"><span>⚖️ Tajaajila Haqaa • Ifa • Saffisaa • Amanamaa</span><span>📍 Nageellee Arsii, Oromiyaa, Itoophiyaa</span></div>
-<header><img class="logo" src="/images/logo.jpg" alt="Loogoo Mana Murtii"><div class="brand"><h1>Mana Murtii Aanaa Nageellee Arsii</h1><p>Website Odeeffannoo fi Tajaajila Mana Murtii</p></div></header>
-<nav aria-label="Main navigation"><a href="#home">Jalqaba</a><a href="#about">Waa'ee Keenya</a><a href="#sections">Kutaalee</a><a href="#services">Tajaajiloota</a><a href="#tqo">TQO</a><a href="#video">Viidiyoo</a><a href="#hearing">Dhaddacha</a><a href="#cases">Barbaacha Galmee</a><a href="#news">Oduu</a><a href="#contact">Nu Qunnamaa</a></nav>
+function openClusterMeet(cluster){
+  const meetLinks={
+    'Doolee':'https://meet.google.com/opa-fcvk-ijr',
+    'Leephis':'https://meet.google.com/hig-tnxc-rqf',
+    'Qaloo':'https://meet.google.com/ofu-wnsx-qmk'
+  };
 
-<main>
-<section class="hero" id="home"><div class="hero-inner"><span class="eyebrow">MANA MURTII AANAA NAGEELLEE ARSII</span><h2>Baga Nagaan Dhuftan!</h2><p>Website odeeffannoo, tajaajila uummataa fi hojiiwwan Mana Murtii Aanaa Nageellee Arsii bakka tokkootti walitti qabu.</p><div class="actions"><a class="btn" href="#services">Tajaajiloota Ilaali</a><a class="btn alt" href="#cases">Barbaacha Galmee</a></div></div></section>
+  const meetUrl=meetLinks[cluster];
+  const status=document.getElementById('clusterSelected');
 
-<section id="about"><div class="container"><div class="section-head"><h2>Waa'ee Mana Murtii</h2><p>Odeeffannoo bu'uuraa fi kallattii tajaajila mana murtii.</p></div><div class="about-grid"><div class="notice"><b>Pirezidaantii:</b> Gammadoo Badhaasoo<br><b>Bilbila:</b> +251 906 937 914<br><b>Email:</b> negelearsicourt52@gmail.com<br><br><span class="muted">Kaayyoon keenya tajaajila haqaa saffisaa, ifa, amanamaa fi uummataaf salphaa ta'e kennuudha.</span></div><div class="facts"><div class="fact"><strong>20+</strong><span class="muted">Kutaalee hojii</span></div><div class="fact"><strong>TQO</strong><span class="muted">Teknooloojii fi Qindoomina Odeeffannoo</span></div><div class="fact"><strong>24/7</strong><span class="muted">Odeeffannoo website irratti</span></div><div class="fact"><strong>⚖️</strong><span class="muted">Haqaaf Hojjenna</span></div></div></div></div></section>
-
-<section id="sections"><div class="container"><div class="section-head"><h2>Agarsiiftuu Kutaalee</h2><p>Kutaalee hojii Mana Murtii Aanaa Nageellee Arsii.</p></div><div class="grid">
-<div class="card department"><span class="num">01</span><h3>Kutaa Pirezidaantii</h3><p>Hoggansa fi qindoomina hojii mana murtii.</p></div>
-<div class="card department"><span class="num">02</span><h3>Kutaa Humna Namaa</h3><p>Bulchiinsa hojjettootaa fi humna namaa.</p></div>
-<div class="card department"><span class="num">03</span><h3>Kutaa Ofisera Hariiroo</h3></div>
-<div class="card department"><span class="num">04</span><h3>M/Galmee Cufamanii</h3></div>
-<div class="card department"><span class="num">05</span><h3>Kutaa Shar’iaa fi A/Ittisaa</h3></div>
-<div class="card department"><span class="num">06</span><h3>Kutaa TQO</h3><p>Teknooloojii fi Qindoomina Odeeffannoo.</p><a class="btn" style="margin-top:12px;padding:9px 13px;font-size:13px" href="#tqo">Ogeessaa TQO Ilaali</a></div>
-<div class="card department"><span class="num">07</span><h3>Kutaa B/B/Faayinaansii</h3></div>
-<div class="card department"><span class="num">08</span><h3>Dhaddacha Dhimmi Maatii fi Daa’immanii 3ffaa</h3></div>
-<div class="card department"><span class="num">09</span><h3>Dhaddacha Hariiroo 1ffaa fi 2ffaa</h3></div>
-<div class="card department"><span class="num">10</span><h3>Dhaddacha Dhimmi Maatii fi Daa’immanii 1ffaa</h3></div>
-<div class="card department"><span class="num">11</span><h3>Kutaa Ofisera Seeraa Yakkaa</h3></div>
-<div class="card department"><span class="num">12</span><h3>Dhaddacha Yakkaa 1ffaa</h3></div>
-<div class="card department"><span class="num">13</span><h3>Kutaa Haala Mijeessituu</h3></div>
-<div class="card department"><span class="num">14</span><h3>Kutaa Odeeffannoo</h3></div>
-<div class="card department"><span class="num">15</span><h3>Kutaa Qabeenyaa</h3></div>
-<div class="card department"><span class="num">16</span><h3>Kutaa Keessummeessaa</h3></div>
-<div class="card department"><span class="num">17</span><h3>Kutaa Viidiyoo Konfiransii</h3></div>
-<div class="card department" style="cursor:pointer" onclick="openHearingFromCard()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openHearingFromCard()"><span class="num">18</span><h3>Dhaddacha Viidiyoo Konfiransii</h3><p class="muted">🎥 Gara dhaddacha viidiyoo seeni</p><button class="btn" type="button" onclick="event.stopPropagation();openHearingFromCard()">Seeni Dhaddacha</button></div>
-<div class="card department"><span class="num">19</span><h3>Dhaddacha Yakkaa 2ffaa</h3></div>
-<div class="card department"><span class="num">20</span><h3>Kutaa Haara Galfannaa</h3></div>
-</div></div></section>
-
-<section id="tqo"><div class="container"><div class="section-head"><h2>Teknooloojii fi Qindoomina Odeeffannoo (TQO)</h2><p>Kutaa TQO fi ogeessaa isaa.</p></div><div class="tqo"><img src="/images/tqo/tqo-profile.jpg?v=20260906" alt="Suuraa Ogeessaa TQO" loading="lazy"><div><span class="tag">KUTAA TQO</span><h3>Misbahu Haji Beriso</h3><p class="role">Ogeessaa TQO</p><p>Mana Murtii Aanaa Nageellee Arsii</p><ul><li>Deeggarsa fi bulchiinsa teknooloojii</li><li>Qindoomina odeeffannoo fi sirna dijitaalaa</li><li>Deeggarsa website fi tajaajila dijitaalaa</li></ul></div></div></div></section>
-
-<section id="services" class="services"><div class="container"><div class="section-head"><h2>Tajaajiloota</h2><p>Tajaajiloota website irratti argaman.</p></div><div class="grid"><div class="card"><div class="icon">📄</div><h3>Galmee Dhimmaa</h3><p>Odeeffannoo fi adeemsa galmee dhimmaa.</p></div><div class="card"><div class="icon">🔎</div><h3>Barbaacha Galmee</h3><p>Lakkoofsa <b>Galmee</b> fayyadamuun barbaacha.</p></div><div class="card"><div class="icon">📅</div><h3>Sagantaa Dhaddachaa</h3><p>Sagantaa dhaddachaa fi odeeffannoo beellamaa.</p></div><div class="card"><div class="icon">⚖️</div><h3>Tajaajila Seeraa</h3><p>Odeeffannoo tajaajila seeraa fi qajeelfama.</p></div></div></div></section>
-
-<section id="video"><div class="container"><div class="section-head"><h2>Dhaddacha Viidiyoo Konfiransii</h2><p>Tajaajila dhaddacha viidiyoo irratti odeeffannoo fi qophii.</p></div><div class="video"><div class="video-panel"><span class="tag" style="background:rgba(255,255,255,.14);color:#fff">VIDEO CONFERENCE</span><h3>Dhaddacha Fageenyaan</h3><p>Teknooloojii viidiyoo fayyadamuun dhaddacha qindaa’aa fi nageenya qabu deeggaruuf kutaan Viidiyoo Konfiransii tajaajila.</p><a class="btn" href="#contact">Odeeffannoo Dabalataa</a></div><div class="steps"><div class="step"><b>1</b><div><strong>Qophii</strong><br><span class="muted">Yeroo fi kutaa dhaddachaa mirkaneessi.</span></div></div><div class="step"><b>2</b><div><strong>Walqunnamtii</strong><br><span class="muted">Linkii ykn qajeelfama dhaddachaa hordofi.</span></div></div><div class="step"><b>3</b><div><strong>Dhaddacha</strong><br><span class="muted">Qajeelfama mana murtii eeguun hirmaadhu.</span></div></div></div></div></div></section>
-
-<section id="login"><div class="container"><div class="section-head"><h2>Seensa Sirna Dhaddachaa</h2><p>Hojjetaa ykn hirmaataa hayyamameen seeni.</p></div><div class="search-box"><div class="grid"><div><label>Username</label><input id="username" placeholder="admin" style="width:100%;padding:12px;border:1px solid #cbd7df;border-radius:8px"></div><div><label>Password</label><input id="password" type="password" placeholder="Password" style="width:100%;padding:12px;border:1px solid #cbd7df;border-radius:8px"></div></div><button class="btn" style="margin-top:14px" onclick="login()">Seeni</button><button class="btn alt" style="margin-top:14px;margin-left:8px;color:var(--navy);border-color:var(--navy);display:none" id="logoutBtn" onclick="logout()">Ba’i</button><div id="loginStatus" class="muted" style="margin-top:12px"></div></div></div></section>
-
-<section id="hearing">
-<div class="container">
-  <div class="section-head">
-    <h2>Tajaajila Viidiyoo Konfiransii</h2>
-    <p>Mana Murtii Aanaa Nageellee Arsii seenuuf kilaastara barbaadde filadhu.</p>
-  </div>
-
-  <div class="card" style="max-width:900px;margin:0 auto;text-align:center;background:linear-gradient(135deg,#071f33,#126a9b);color:#fff">
-    <span class="tag" style="background:rgba(255,255,255,.14);color:#fff">VIDEO CONFERENCE</span>
-    <h3 style="color:#fff;font-size:28px;margin:8px 0 18px">Mana Murtii Aanaa Nageellee Arsii</h3>
-    <p style="margin-bottom:22px">Kilaastara ittiin Tajaajila Viidiyoo Konfiransii fayyadamtu filadhu.</p>
-
-    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px">
-      <a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer"
-         style="display:block;padding:18px 12px;font-size:18px">1. Doolee</a>
-      <a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer"
-         style="display:block;padding:18px 12px;font-size:18px">2. Leephis</a>
-      <a class="btn" href="https://meet.google.com/opa-fcvk-ijr" target="_blank" rel="noopener noreferrer"
-         style="display:block;padding:18px 12px;font-size:18px">3. Qaloo</a>
-    </div>
-
-    <p style="margin:22px 0 0;font-size:13px;opacity:.9">
-      Kilaastara keessaa tokko cuqaasuun Google Meet ni banama.
-    </p>
-  </div>
-</div>
-</section>
-
-<section id="cases"><div class="container"><div class="section-head"><h2>Barbaacha Galmee — CCMS</h2><p>Lakkoofsa <b>Galmee</b> galchiitii barbaadi.</p></div><div class="search-box"><div class="search"><input id="q" aria-label="Lakkoofsa Galmee" placeholder="Lakkoofsa Galmee galchi..."><button onclick="searchCase()">Barbaadi</button></div><div id="results" class="results"></div></div></div></section>
-
-<section id="news"><div class="container"><div class="section-head"><h2>Oduu fi Beeksisa</h2><p>Odeeffannoo haaraa fi sochiiwwan mana murtii.</p></div><div class="grid"><div class="card news"><span class="tag">BEEKSISA</span><h3>Beeksisa Mana Murtii</h3><p>Beeksisawwan haaraa yeroo yerootti as irratti maxxanfamu.</p></div><div class="card news"><span class="tag">HOJII</span><h3>Hojiiwwan Mana Murtii</h3><p>Daawwannaa hojii, muuxannoo wal-jijjiiruu fi sochiiwwan mana murtii.</p></div><div class="card news"><span class="tag">DIJITAALAA</span><h3>Tajaajila Dijitaalaa</h3><p>Fooyya’iinsa website fi tajaajila odeeffannoo dijitaalaa.</p></div></div></div></section>
-
-<section id="contact"><div class="container"><div class="section-head"><h2>Nu Qunnamaa</h2><p>Odeeffannoo quunnamtii Mana Murtii.</p></div><div class="contact"><div class="card"><h3>📍 Teessoo</h3><p>Nageellee Arsii, Oromiyaa, Itoophiyaa</p></div><div class="card"><h3>📞 Bilbila</h3><p><a href="tel:+251906937914">+251 906 937 914</a></p><h3>✉️ Email</h3><p><a href="mailto:negelearsicourt52@gmail.com">negelearsicourt52@gmail.com</a></p></div></div></div></section>
-</main>
-<footer><strong>© 2026 Mana Murtii Aanaa Nageellee Arsii</strong><br>“Haqaaf Hojjenna, Haqa Kabachiifna!”</footer>
-<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Gara gubbaatti deebi'i">↑</button>
-<script>
-let token=localStorage.getItem('ccms_token');
-function esc(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}
-async function login(){const username=document.getElementById('username').value.trim(),password=document.getElementById('password').value;const box=document.getElementById('loginStatus');box.textContent='Seensa mirkaneessaa jira...';try{const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})});const d=await r.json();if(!r.ok)throw new Error(d.error);token=d.token;localStorage.setItem('ccms_token',token);box.innerHTML='✓ Baga nagaan dhuftan, <b>'+esc(d.user.name)+'</b> — '+esc(d.user.role);document.getElementById('logoutBtn').style.display='inline-block';loadHearings();}catch(e){box.textContent=e.message}}
-async function logout(){if(token)await fetch('/api/logout',{method:'POST',headers:{Authorization:'Bearer '+token}});token=null;localStorage.removeItem('ccms_token');document.getElementById('loginStatus').textContent='Baateetta.';document.getElementById('logoutBtn').style.display='none'}
-let selectedHearing=null;
-function openHearingFromCard(){
-  document.getElementById('hearing').scrollIntoView({behavior:'smooth',block:'start'});
-  if(!token){
-    setTimeout(()=>{document.getElementById('login').scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('loginStatus').textContent='Jalqaba seensa kee mirkaneessi; achiis dhaddacha viidiyoo filadhu.';},450);
+  if(!meetUrl){
+    if(status) status.textContent='Liinkiin kilaastara kanaaf hin argamne.';
     return;
   }
-  loadHearings();
-}
-async function loadHearings(){const r=await fetch('/api/hearings');const data=await r.json();const box=document.getElementById('hearingList');box.innerHTML=data.map(h=>`<div class="card"><span class="tag">${esc(h.status)}</span><h3>${esc(h.title)}</h3><p><b>Guyyaa:</b> ${esc(h.date)}</p><p><b>Sa’aatii:</b> ${esc(h.time)}</p><p><b>Galmee:</b> ${esc(h.caseNo)}</p><button class="btn" onclick="prepareRoom(${h.id})">🎥 Seeni Dhaddacha</button></div>`).join('')}
-async function prepareRoom(id){
-  if(!token){document.getElementById('login').scrollIntoView({behavior:'smooth'});document.getElementById('loginStatus').textContent='Jalqaba seensa kee mirkaneessi.';return}
-  const r=await fetch('/api/hearings/'+id); const h=await r.json(); if(!r.ok){alert(h.error||'Dhaddachi hin argamne.');return}
-  selectedHearing=id; document.getElementById('roomTitle').textContent=h.title; document.getElementById('roomMeta').textContent='Galmee: '+h.caseNo+' • Guyyaa: '+h.date+' • Sa’aatii: '+h.time; document.getElementById('roomStatus').textContent='Qophii xumuriitii “Google Meet Bani” cuqaasi.'; document.getElementById('hearingRoom').style.display='block'; document.getElementById('hearingRoom').scrollIntoView({behavior:'smooth',block:'center'});
-}
-function closeRoom(){selectedHearing=null;document.getElementById('hearingRoom').style.display='none'}
-async function enterRoom(){
-  if(!token||!selectedHearing){document.getElementById('loginStatus').textContent='Jalqaba seeniitii dhaddacha filadhu.';return}
-  const role=document.getElementById('participantRole').value; const box=document.getElementById('roomStatus'); box.textContent='Seensa kee mirkaneessaa jira...';
-  try{const r=await fetch('/api/hearings/'+selectedHearing+'/join',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({role})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Seensa hin hayyamamne.'); box.textContent='✓ Seensa mirkanaa’e. Google Meet banamaa jira...'; window.open(d.meetUrl,'_blank','noopener,noreferrer')}catch(e){box.textContent=e.message}
-}
-async function searchCase(){const q=document.getElementById('q').value.trim(),box=document.getElementById('results');if(!q){box.innerHTML='<div class="notice">Lakkoofsa Galmee galchi.</div>';return}box.innerHTML='<p class="muted">Barbaadaa jira...</p>';try{const r=await fetch('/api/cases?q='+encodeURIComponent(q));const data=await r.json();if(!r.ok){box.innerHTML='<div class="notice">'+esc(data.error||'Dogoggorri uumame.')+'</div>';return}box.innerHTML=data.length?data.map(x=>'<div class="result"><pre>'+esc(JSON.stringify(x,null,2))+'</pre></div>').join(''):'<div class="notice">Galmeen barbaadame hin argamne.</div>'}catch(e){box.innerHTML='<div class="notice">Server/database waliin walqunnamtiin hin jiru.</div>'}}
-document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')searchCase()});
-loadHearings();
 
-async function openConference(){document.getElementById('conference').style.display='block';document.getElementById('conference').scrollIntoView({behavior:'smooth'});}
-async function joinConference(){const msg=document.getElementById('confMsg');msg.innerHTML='Seensa mirkaneessaa jira...';try{const login=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:document.getElementById('confUser').value,password:document.getElementById('confPass').value})});const ld=await login.json();if(!login.ok){msg.innerHTML='<div class="notice">'+(ld.error||'Login hin milkoofne.')+'</div>';return}const r=await fetch('/api/hearings/1/join',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ld.token},body:JSON.stringify({role:document.getElementById('confRole').value})});const d=await r.json();if(!r.ok){msg.innerHTML='<div class="notice">'+(d.error||'Seensa hin hayyamamne.')+'</div>';return}msg.innerHTML='<div class="notice">Seensi kee milkaaʼeera. <a class="btn" href="'+d.meetUrl+'" target="_blank" rel="noopener">🎥 Google Meet Bani</a></div>';}catch(e){msg.innerHTML='<div class="notice">Server waliin walqunnamtiin hin jiru.</div>';}}
-</script>
-</body></html>
+  if(status){
+    status.textContent='✓ '+cluster+' filatame. Google Meet banamaa jira...';
+  }
+
+  window.open(meetUrl,'_blank','noopener,noreferrer');
+}
