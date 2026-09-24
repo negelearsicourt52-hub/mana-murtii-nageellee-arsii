@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: mana-murtii-nageellee-arsii-v3
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: CONFERENCE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JUDGE_PASSWORD
+        sync: false
+      - key: OFFICER_PASSWORD
+        sync: false
+      - key: DB_SERVER
+        sync: false
+      - key: DB_PORT
+        value: "1433"
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_ENCRYPT
+        value: "false"
