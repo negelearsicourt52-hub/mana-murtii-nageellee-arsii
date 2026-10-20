@@ -73,11 +73,80 @@ async function ensureScanTable(){
   return scanTableReady;
 }
 function validDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||'')) && !Number.isNaN(Date.parse(s+'T00:00:00Z'));}
-app.post('/api/scan/events',async(req,res)=>{
-  const configured=process.env.SCAN_AGENT_KEY;
-  if(!configured) return res.status(503).json({error:'SCAN_AGENT_KEY Render irratti hin qindaa’in.'});
-  if(!req.headers['x-scan-agent-key'] || req.headers['x-scan-agent-key']!==configured)
-    return res.status(401).json({error:'Scan agent key sirrii miti.'});
+
+app.post('/api/scan/events', async (req, res) => {
+  const configured = process.env.SCAN_AGENT_KEY;
+
+  if (!configured) {
+    return res.status(503).json({
+      error: 'SCAN_AGENT_KEY Render irratti hin qindaa’in.'
+    });
+  }
+
+  if (req.headers['x-scan-agent-key'] !== configured) {
+    return res.status(401).json({
+      error: 'Scan agent key sirrii miti.'
+    });
+  }
+
+  const b = req.body || {};
+  const computerId = String(b.computerId || '').trim();
+  const workerName = String(b.workerName || '').trim();
+  const category = String(b.category || '');
+  const fileName = String(b.fileName || '').trim().slice(0, 260);
+  const fileHash = String(b.fileHash || '').toLowerCase();
+  const fileSize = Number(b.fileSize);
+
+  if (
+    !/^\d{3}$/.test(computerId) ||
+    !workerName ||
+    !['Yakkaa', 'HH'].includes(category) ||
+    !fileName.toLowerCase().endsWith('.pdf') ||
+    !/^[a-f0-9]{64}$/.test(fileHash) ||
+    !Number.isSafeInteger(fileSize) ||
+    fileSize < 0
+  ) {
+    return res.status(400).json({
+      error: 'Odeeffannoo scan guutuu ykn sirrii miti.'
+    });
+  }
+
+  const eventKey = crypto
+    .createHash('sha256')
+    .update(`${computerId}|${category}|${fileHash}`)
+    .digest('hex');
+
+  try {
+    await ensureScanTable();
+    const p = await scanDb();
+
+    const result = await p.query(
+      `INSERT INTO scan_events
+        (event_key, computer_id, worker_name, category,
+         file_name, file_size, file_hash)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       ON CONFLICT (event_key) DO NOTHING
+       RETURNING event_key`,
+      [
+        eventKey,
+        computerId,
+        workerName.slice(0, 100),
+        category,
+        fileName,
+        fileSize,
+        fileHash
+      ]
+    );
+
+    res.json({ ok: true, inserted: result.rowCount > 0 });
+  } catch (e) {
+    console.error('Scan event error:', e.message);
+    res.status(503).json({
+      error: 'Scan database waliin walqabsiisuun hin danda’amne.'
+    });
+  }
+});
+
   const b=req.body||{};
   const computerId=String(b.computerId||'').trim();
   const workerName=String(b.workerName||'').trim();
