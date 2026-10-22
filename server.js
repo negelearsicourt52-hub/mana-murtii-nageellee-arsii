@@ -133,21 +133,44 @@ app.get('/api/scan/report', auth, async (req, res) => {
 
     const p = await scanDb();
 
-    const result = await p.query(
-      `SELECT
-         (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date::text
-           AS "scanDate",
-         computer_id AS "computerId",
-         worker_name AS "workerName",
-         category,
-         COUNT(*)::int AS "recordCount"
-       FROM scan_events
-       WHERE created_at >=
-             (($1::date)::timestamp AT TIME ZONE 'Africa/Addis_Ababa')
-         AND created_at <
-             ((($2::date + 1)::timestamp)
-               AT TIME ZONE 'Africa/Addis_Ababa')
-       GROUP BY
+   
+const result = await p.query(
+  `SELECT
+     (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date::text
+       AS "scanDate",
+     CASE computer_id
+       WHEN 'Computer 001' THEN 'Amaanaa'
+       WHEN 'Computer 002' THEN 'Adaanuu'
+       WHEN 'Computer 003' THEN 'Fayyisaa'
+       WHEN 'Computer 004' THEN 'Ayyaantuu'
+       WHEN 'Computer 005' THEN 'Gammachuu'
+       WHEN 'Computer 006' THEN 'Xayyibee'
+       ELSE computer_id
+     END AS "computerId",
+     CASE computer_id
+       WHEN 'Computer 001' THEN 'Amaanaa'
+       WHEN 'Computer 002' THEN 'Adaanuu'
+       WHEN 'Computer 003' THEN 'Fayyisaa'
+       WHEN 'Computer 004' THEN 'Ayyaantuu'
+       WHEN 'Computer 005' THEN 'Gammachuu'
+       WHEN 'Computer 006' THEN 'Xayyibee'
+       ELSE worker_name
+     END AS "workerName",
+     category,
+     COUNT(*)::int AS "recordCount"
+   FROM scan_events
+   WHERE created_at >=
+         (($1::date)::timestamp AT TIME ZONE 'Africa/Addis_Ababa')
+     AND created_at <
+         ((($2::date + 1)::timestamp)
+           AT TIME ZONE 'Africa/Addis_Ababa')
+   GROUP BY
+     (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date,
+     computer_id, worker_name, category
+   ORDER BY "scanDate", "computerId", category`,
+  [from, to]
+);
+
          (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date,
          computer_id,
          worker_name,
