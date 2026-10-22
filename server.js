@@ -112,6 +112,7 @@ app.post('/api/scan/events',async(req,res)=>{
   }catch(e){console.error('Scan event error:',e.message);res.status(503).json({error:'Kuusaan daataa scan waliin walqabsiisuun hin danda’amne. Database fi hayyama isaa mirkaneessi.'});}
 });
 
+
 app.get('/api/scan/report', auth, async (req, res) => {
   if (!['Admin', 'Ofisera Seeraa'].includes(req.user.role)) {
     return res.status(403).json({
@@ -133,60 +134,67 @@ app.get('/api/scan/report', auth, async (req, res) => {
 
     const p = await scanDb();
 
-   
-const result = await p.query(
-  `SELECT
-     (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date::text
-       AS "scanDate",
-     CASE computer_id
-       WHEN 'Computer 001' THEN 'Amaanaa'
-       WHEN 'Computer 002' THEN 'Adaanuu'
-       WHEN 'Computer 003' THEN 'Fayyisaa'
-       WHEN 'Computer 004' THEN 'Ayyaantuu'
-       WHEN 'Computer 005' THEN 'Gammachuu'
-       WHEN 'Computer 006' THEN 'Xayyibee'
-       ELSE computer_id
-     END AS "computerId",
-     CASE computer_id
-       WHEN 'Computer 001' THEN 'Amaanaa'
-       WHEN 'Computer 002' THEN 'Adaanuu'
-       WHEN 'Computer 003' THEN 'Fayyisaa'
-       WHEN 'Computer 004' THEN 'Ayyaantuu'
-       WHEN 'Computer 005' THEN 'Gammachuu'
-       WHEN 'Computer 006' THEN 'Xayyibee'
-       ELSE worker_name
-     END AS "workerName",
-     category,
-     COUNT(*)::int AS "recordCount"
-   FROM scan_events
-   WHERE created_at >=
-         (($1::date)::timestamp AT TIME ZONE 'Africa/Addis_Ababa')
-     AND created_at <
-         ((($2::date + 1)::timestamp)
-           AT TIME ZONE 'Africa/Addis_Ababa')
-   GROUP BY
-     (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date,
-     computer_id, worker_name, category
-   ORDER BY "scanDate", "computerId", category`,
-  [from, to]
-);
+    const result = await p.request()
+      .input('from', sql.VarChar(10), from)
+      .input('to', sql.VarChar(10), to)
+      .query(`
+        SELECT
+          CONVERT(varchar(10), CAST(createdAt AS date), 23)
+            AS scanDate,
+
+          CASE computerId
+            WHEN '001' THEN 'Amaanaa'
+            WHEN '002' THEN 'Adaanuu'
+            WHEN '003' THEN 'Fayyisaa'
+            WHEN '004' THEN 'Ayyaantuu'
+            WHEN '005' THEN 'Gammachuu'
+            WHEN '006' THEN 'Xayyibee'
+            ELSE computerId
+          END AS computerId,
+
+          CASE computerId
+            WHEN '001' THEN 'Amaanaa'
+            WHEN '002' THEN 'Adaanuu'
+            WHEN '003' THEN 'Fayyisaa'
+            WHEN '004' THEN 'Ayyaantuu'
+            WHEN '005' THEN 'Gammachuu'
+            WHEN '006' THEN 'Xayyibee'
+            ELSE workerName
+          END AS workerName,
+
+          category,
+          COUNT(*) AS recordCount
+
+        FROM dbo.ScanEvents
+
+        WHERE createdAt >= CONVERT(date, @from, 23)
+          AND createdAt < DATEADD(
+            day, 1, CONVERT(date, @to, 23)
+          )
+
+        GROUP BY
+          CAST(createdAt AS date),
+          computerId,
+          workerName,
+          category
+
+        ORDER BY
+          CAST(createdAt AS date),
+          computerId,
+          category
+      `);
 
     res.json({
       from,
       to,
-      rows: result.rows
+      rows: result.recordset
     });
+
   } catch (e) {
-    console.error('Scan report error:', e.message);
+    console.error('Scan report error:', e);
 
     res.status(503).json({
-      error: 'Gabaasa scan argachuun hin danda’amne. Database scan qindaa’uu qaba.'
+      error: 'Gabaasa scan argachuun hin danda’amne. Database fi gabatee scan mirkaneessi.'
     });
   }
-});
-
-const PORT = Number(process.env.PORT || 3000);
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Scan Report server running on port ${PORT}`);
 });
