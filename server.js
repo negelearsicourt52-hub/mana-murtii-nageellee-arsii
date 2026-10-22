@@ -111,29 +111,61 @@ app.post('/api/scan/events',async(req,res)=>{
     res.status(200).json({ok:true,inserted:!!r.recordset[0].inserted});
   }catch(e){console.error('Scan event error:',e.message);res.status(503).json({error:'Kuusaan daataa scan waliin walqabsiisuun hin danda’amne. Database fi hayyama isaa mirkaneessi.'});}
 });
-app.get('/api/scan/report',auth,async(req,res)=>{
-  if(!['Admin','Ofisera Seeraa'].includes(req.user.role))
-    return res.status(403).json({error:'Gabaasa scan ilaaluuf hayyama hin qabdu.'});
-  const from=String(req.query.from||'');
-  const to=String(req.query.to||'');
-  if(!validDate(from)||!validDate(to)||from>to)
-    return res.status(400).json({error:'Guyyaa jalqabaa fi dhumaa sirriitti filadhu.'});
-  try{
-    await ensureScanTable();
-    const p=await scanDb();
-    const r=await p.request()
-      .input('fromDate',sql.VarChar(10),from)
-      .input('toDate',sql.VarChar(10),to)
-      .query(`SELECT CONVERT(varchar(10),createdAt,120) AS scanDate, computerId, workerName, category,
-        COUNT(*) AS recordCount
-        FROM dbo.ScanEvents
-        WHERE createdAt >= CONVERT(datetime,@fromDate,120)
-          AND createdAt < DATEADD(day,1,CONVERT(datetime,@toDate,120))
-        GROUP BY CONVERT(varchar(10),createdAt,120),computerId,workerName,category
-        ORDER BY scanDate,computerId,category`);
-    res.json({from,to,rows:r.recordset});
-  }catch(e){console.error('Scan report error:',e.message);res.status(503).json({error:'Gabaasa scan argachuun hin danda’amne. Database scan qindaa’uu qaba.'});}
-});
 
-app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
-const PORT=Number(process.env.PORT||3000); app.listen(PORT,()=>console.log(`CCMS V3 running on http://localhost:${PORT}`));
+app.get('/api/scan/report', auth, async (req, res) => {
+  if (!['Admin', 'Ofisera Seeraa'].includes(req.user.role)) {
+    return res.status(403).json({
+      error: 'Gabaasa scan ilaaluuf hayyama hin qabdu.'
+    });
+  }
+
+  const from = String(req.query.from || '');
+  const to = String(req.query.to || '');
+
+  if (!validDate(from) || !validDate(to) || from > to) {
+    return res.status(400).json({
+      error: 'Guyyaa jalqabaa fi dhumaa sirriitti filadhu.'
+    });
+  }
+
+  try {
+    await ensureScanTable();
+
+    const p = await scanDb();
+
+    const result = await p.query(
+      `SELECT
+         (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date::text
+           AS "scanDate",
+         computer_id AS "computerId",
+         worker_name AS "workerName",
+         category,
+         COUNT(*)::int AS "recordCount"
+       FROM scan_events
+       WHERE created_at >=
+             (($1::date)::timestamp AT TIME ZONE 'Africa/Addis_Ababa')
+         AND created_at <
+             ((($2::date + 1)::timestamp)
+               AT TIME ZONE 'Africa/Addis_Ababa')
+       GROUP BY
+         (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date,
+         computer_id,
+         worker_name,
+         category
+       ORDER BY "scanDate", "computerId", category`,
+      [from, to]
+    );
+
+    res.json({
+      from,
+      to,
+      rows: result.rows
+    });
+  } catch (e) {
+    console.error('Scan report error:', e.message);
+
+    res.status(503).json({
+      error: 'Gabaasa scan argachuun hin danda’amne. Database scan qindaa’uu qaba.'
+    });
+  }
+});
