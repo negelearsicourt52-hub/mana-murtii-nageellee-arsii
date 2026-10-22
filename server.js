@@ -171,14 +171,6 @@ const result = await p.query(
   [from, to]
 );
 
-         (created_at AT TIME ZONE 'Africa/Addis_Ababa')::date,
-         computer_id,
-         worker_name,
-         category
-       ORDER BY "scanDate", "computerId", category`,
-      [from, to]
-    );
-
     res.json({
       from,
       to,
